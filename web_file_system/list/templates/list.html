@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LIST</title>
-</head>
-<body>
-    FILE LIST
-</body>
-</html>
+
+
+{% extends 'base.html' %}
+ 
+{% block title %}欢迎光临LIST{% endblock %}
+
+
+FILE LIST
+ 
+{% block content %}
+{% include 'ad.html' %}
+这里是首页，欢迎光临
+{% endblock %}
