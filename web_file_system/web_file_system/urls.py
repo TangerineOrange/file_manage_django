@@ -19,6 +19,9 @@ from list import views  as list_views
 
 
 urlpatterns = [
-    path('',list_views.getList,name='getList'),
+    path('',list_views.home,name='home'),
+    path('list/',list_views.getList,name='list'),
+    path('login/',list_views.login,name='login'),
+    path('insertImage/',list_views.insertImage,name='insertImage'),
     path('admin/', admin.site.urls),
 ]
