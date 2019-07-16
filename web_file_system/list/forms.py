@@ -1,5 +1,5 @@
 from django import forms
  
 class AddForm(forms.Form):
-    your_name = forms.CharField(label='Your name', max_length=100)
-    b = forms.IntegerField()
+    name = forms.CharField(label='name', max_length=100)
+    path = forms.CharField(label='path', max_length=100)

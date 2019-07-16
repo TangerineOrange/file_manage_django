@@ -24,7 +24,7 @@ SECRET_KEY = 'qv+x@sntzsvrossobf^nqc4l3gfk&6z^k=&0t9=3yo1%l(7@ou'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -85,6 +85,11 @@ DATABASES = {
         'PASSWORD':'123',
         'HOST':'localhost',
         'PORT':'',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+        },
+
     }
 }
 
@@ -126,3 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# you can specify static files shared by all app in setting.py,
+# such as jquery.js,etc.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "common_static"),
+)
