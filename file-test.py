@@ -19,8 +19,7 @@ list = []
 # print(' a ',type(a))
 # print(' list ',type(list))
  
-
-
+# sdfsdfsdfsdfsdfsdfsdf
 # print(' list ',type(val[0]))
 # print(' list ',val)
 # print(' list ',list(val))
