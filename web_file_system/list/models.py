@@ -6,4 +6,11 @@ class image(models.Model):
     name = models.CharField(max_length=30)
     path = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
+
+class Blog(models.Model):
+    title = models.CharField(max_length = 100)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
     

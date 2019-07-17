@@ -53,6 +53,30 @@ def insertManyData(tName,list):
     mydb.commit()
 
 
+
+
+tName="list_blog"
+
+mydb = conn()
+mycursor = mydb.cursor()
+sql = "INSERT INTO "+tName+" (title, content) VALUES ( %s, %s);"
+
+
+# generate data list
+list=[]
+f = open('web_file_system/oldblog.txt')
+for line in f:
+    title,content = line.split('****')
+    item = []
+    item.append(title)
+    item.append(content)
+    list.append(tuple(item))
+f.close()
+
+mycursor.executemany(sql,list)
+mydb.commit()
+
+
 val = [
   ('test5', 'test5', 'test5'),
   ('test6', 'test6', 'test6'),

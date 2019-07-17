@@ -3,10 +3,41 @@
 {% block title %}HOME{% endblock %}
 
 {% block content %}
-THIS IS HOME!
 
-please <a href="{% url 'login' %}">log in</a>
-please <a href="{% url 'list' %}">list</a>
+
+<div class="container red-box">
+    THIS IS HOME!
+    this is my first bootstrap web page.
+
+    <br />
+
+    please <a href="{% url 'login' %}">log in</a>
+    please <a href="{% url 'list' %}">list</a>
+
+</div>
+
+<div class="container red-box div-table">
+    <!-- 第一个例子：控制列的宽度及在不同的设备上如何显示 -->
+    <div class="row">
+        <div class="col-md-6">1</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">1</div>
+        <div class="col-md-3">1</div>
+        <div class="col-md-3">1</div>
+    </div>
+
+    <!-- 第二个例子：或让 Bootstrap 者自动处理布局 -->
+    <div class="row">
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+    </div>
+</div>
+
+
+
+
 
 
 {% include 'ad.html' %}

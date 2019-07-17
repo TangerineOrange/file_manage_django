@@ -1,0 +1,28 @@
+.red-box{
+    border: 1px solid red;
+}
+
+.blue-bg{
+    background-color: deepskyblue;
+}
+
+.brown-bg{
+    background-color: sienna;
+}
+
+.div-table div{
+    background-color: darkgreen;
+
+}
+
+#top{
+    
+    height: 100px;
+    background-color: deepskyblue;
+}
+
+#bottom{
+    width: 100%;
+    height: 100px;
+    background-color: sienna;
+}
