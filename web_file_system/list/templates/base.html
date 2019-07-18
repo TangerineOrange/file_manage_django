@@ -25,20 +25,28 @@
     <!-- 自己的 -->
     <link rel="stylesheet" href=" /static/css/base.css">
 
+    <title>{% block title %}{% endblock %}</title>
+    {% block html_head %}{% endblock %}
+
 </head>
 
 <body>
     {% include 'top.html' %}
-    {% block content %}
 
-    <div>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。</div>
-  
-  
-    {% endblock %}
+  {% block top %}
 
 
-    {% include 'bottom.html' %}
-    
+        {% endblock %}
+    <div id="content">
+        {% block content %}
+
+         <div>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。</div>
+
+        {% endblock %}
+      </div>
+
+   {% include 'bottom.html' %}
+
 </body>
 
 </html>
