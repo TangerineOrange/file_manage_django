@@ -1,0 +1,186 @@
+
+/* -------------- */
+
+
+a {
+    background-color: transparent
+}
+
+a:active,
+a:hover {
+    outline: 0
+}
+
+
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: transparent
+}
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none
+}
+
+a:focus,
+a:hover {
+    color: #23527c;
+    text-decoration: underline
+}
+
+a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px
+}
+
+figure {
+    margin: 0
+}
+
+img {
+    vertical-align: middle
+}
+
+
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 10px
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin-bottom: 0
+}
+
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width:768px) {
+    .container {
+        width: 750px
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        width: 970px
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        width: 1170px
+    }
+}
+/* 
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px
+} */
+
+#waterfall {
+    margin: 10px auto
+}
+
+#waterfall .item {
+    float: left
+}
+
+.photo-info {
+    word-wrap: break-word;
+    display: block;
+    padding: 10px;
+    line-height: 22px;
+    color: #333;
+    background-color: #fafafa;
+    border-top: 1px solid #f2f2f2
+}
+
+.movie-box {
+    display: block;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 10px;
+    width: 167px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3)
+}
+
+@media (max-width:479px) {
+    .movie-box {
+        width: 125px
+    }
+}
+
+.movie-box .photo-frame {
+    overflow: hidden;
+    height: 200px;
+    margin: 10px
+}
+
+@media (max-width:479px) {
+    .movie-box .photo-frame {
+        margin: 0;
+        height: 178px
+    }
+}
+
+.movie-box img {
+    height: 200px
+}
+
+@media (max-width:479px) {
+    .movie-box img {
+        height: 178px;
+        margin-left: -3px
+    }
+}
+
+
+.movie-box date {
+    color: #c00;
+    font-size: 12px
+}

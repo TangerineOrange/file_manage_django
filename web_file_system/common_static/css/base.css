@@ -1,26 +1,26 @@
-.red-box{
+.red-box {
     border: 1px solid red;
 }
 
-.blue-bg{
+.blue-bg {
     background-color: deepskyblue;
 }
 
-.brown-bg{
+.brown-bg {
     background-color: sienna;
 }
- 
-.div-table div{
-	background-color: darkgreen;
+
+.div-table div {
+    background-color: darkgreen;
 }
 
-#top{
-    
+#top {
+
     height: 100px;
     background-color: deepskyblue;
 }
 
-#bottom{
+#bottom {
     width: 100%;
     height: 100px;
     background-color: sienna;
