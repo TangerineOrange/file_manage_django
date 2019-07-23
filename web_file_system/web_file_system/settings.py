@@ -132,8 +132,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_DIR_NAME="common_static\\"
 # you can specify static files shared by all app in setting.py,
 # such as jquery.js,etc.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "common_static"),
+    os.path.join(BASE_DIR, STATIC_DIR_NAME),
 )

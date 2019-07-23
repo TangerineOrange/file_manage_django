@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}HOME{% endblock %}
+
+{% block content %}
+
+
+<script type="text/javascript">
+    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+</script>
+
+<div>
+    <span>
+        Insert all movie data into the database of MySQL.
+    </span>
+    <button mat-button>Click me!</button>
+    <a class="btn btn-primary" href="{% url 'addAllImgToSQL'  %}" role="button">add all</a>
+
+    <br>
+
+    <span>
+        add all images to mysql:
+    </span>
+    <a class="btn btn-primary" href="{% url 'addAllImgToSQL'  %}" role="button">add all</a>
+
+</div>
+
+{% endblock %}

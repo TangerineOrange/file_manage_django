@@ -9,189 +9,76 @@ add all images to mysql:<a class="btn btn-primary" href="{% url 'addAllImgToSQL'
 remove all images data from mysql:<a class="btn btn-primary" href="{% url 'removeAllDataInImage'  %}"
     role="button">remove all</a>
 <br />
-show all images data from mysql:<a class="btn" id="show_data" role="button">show all</a>
+
+<span>
+    show all images data from mysql:
+</span>
+<button type="button" class="btn" id="show_data" onclick="showImagesData(-1);">show all</button>
 <br />
+
+<span>
+    show certainly images data from mysql:
+</span>
+<button type="button" class="btn" id="show_data" onclick="showImagesData(1);">show all</button>
 <br />
 
-<br />
-
-
-<span>{{num}}</span>
-<span>{{num2}}</span>
-<div>
-    <span>result:</span>
-    <span ></span>
-</div>
-
-
-
-
-
-<div class="container-fluid">
-    <div class="row" id="result">
-
+<div class="container-fluid" id="result">
+    <div class="row">
     </div>
 </div>
 
+
+<a href="{% url 'showAllMoviesData' %}">showAllMoviesData</a>
+
 <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#show_data").click(function () {
-            console.log('click')
-            $.get("{% url 'showAllImageData'  %}", function (ret) {
-                htmlStr = ""
 
-                
-                console.log('ret' )
-                console.log( JSON.parse(JSON.stringify(ret))[0])
-                console.log( JSON.parse(JSON.stringify(ret))[1])
-                console.log( JSON.parse(JSON.stringify(ret))[2])
-                console.log( JSON.parse(JSON.stringify(ret))[3])
+<script type="text/javascript">
+
+    showImagesData = function (num) {
+        rowNum = 2;
+        rowMax = 12;
+
+        $.get("{% url 'showAllImageData'  %}", function (ret) {
+            htmlStr = ""
+            length = num < 0 ? ret.length : num
 
 
+            for (let i = 0; i < length;) {
 
-                console.log(  JSON.stringify(ret)[0])
-                console.log(  JSON.stringify(ret)[1])
-                console.log(  JSON.stringify(ret)[2])
-                console.log(  JSON.stringify(ret)[3])
-                console.log(  JSON.stringify(ret)[4])
-                
-                htmlStr += " <div class=\"col-lg\">        " +
-                        "    <a href=\"#\" class=\"card\">       " +
-                        "         <img src=\""+ret.path+"\" class=\"img-fluid\"   " +
-                        "                 title=\""+ret.name+"\">     " +
-                        "           <div class=\"card-text\">                " +
-                        "    <span>                        "+ret.name+" <br />        " +
-                        "                <date>TYPE:</date> / <date>"+ret.type+"</date>    " +
-                        "                </span>              " +
-                        "  </div>         " +
-                        "   </a>        " +
-                        "</div>"
-                $('#result').html(htmlStr)
+                if (i % 3 == 0) {
+                    htmlStr += "<div class=\"row\">" 
+                    for (let j = 0; j < (rowMax / rowNum) &&  i < length; i++,j++) {
+                        item = ret[i];
 
-            })
-        });
-    });
+                        htmlStr +=
+                            " <div class=\"col-md-" + rowNum + "\">  " +
+                            "    <a href=\"#\" class=\"card\">  " +
+                            "       <img src=\"" + item.path + "\" class=\"img-fluid\"  " +
+                            "       title=\"" + item.name + "\">     " +
+                            "       <div class=\"card-text\">                " +
+                            "           <span> " + item.name + " <br />" +
+                            "           <date>TYPE:</date> / <date>" + item.type + "</date>    " +
+                            "           </span>              " +
+                            "       </div>         " +
+                            "    </a>        " +
+                            "</div>"
+                    }
+                    htmlStr += "</div>" 
+                }
+            }
+            htmlStr += $('#result').html()
+            $('#result').html(htmlStr)
+        })
+
+
+    }
 </script>
 
 
+please <a href="{% url 'login' %}">log in</a>
+please <a href="{% url 'list' %}">list</a>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div id="waterfall">
-            <div class="item">
-                <a class="movie-box" href="#">
-                    <div class="photo-frame">
-                        <img src="/static/images/132f478d57a7b16994aa8ba3f05e524e.jpg"
-                            title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                    </div>
-                    <div class="photo-info">
-                        <span>2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？<br>
-                            <date>ABC-884</date> / <date>2019-08-02</date>
-                        </span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/132f478d57a7b16994aa8ba3f05e524e.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/3b2451235a5c86a52c472e511380186c.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/132f478d57a7b16994aa8ba3f05e524e.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/3b2451235a5c86a52c472e511380186c.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/132f478d57a7b16994aa8ba3f05e524e.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg">
-            <a href="#" class="card">
-                <img src="/static/images/3b2451235a5c86a52c472e511380186c.jpg" class="img-fluid"
-                    title="2019 LPL 夏季赛 iG 2:1 力克 FPX，如何评价这场比赛？">
-                <div class="card-text">
-                    <span>
-                        TITLE <br />
-                        <date>ABC-884</date> / <date>2019-08-02</date>
-                    </span>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-<div class="container  ">
-    THIS IS HOME!
-    this is my first bootstrap web page.
-
-    <br />
-    <div class="mdc-text-field">
-        <input class="mdc-text-field__input" type="text" id="input">
-        <label for="input" class="mdc-floating-label">Input Label</label>
-        <div class="mdc-line-ripple">
-            123123
-        </div>
-    </div>
-
-    please <a href="{% url 'login' %}">log in</a>
-    please <a href="{% url 'list' %}">list</a>
-
-</div>
 
 <div class="container red-box div-table">
     <!-- 第一个例子：控制列的宽度及在不同的设备上如何显示 -->
@@ -211,9 +98,6 @@ show all images data from mysql:<a class="btn" id="show_data" role="button">show
         <div class="col-md-4">1</div>
     </div>
 </div>
-
-<!-- <script src=''></script> -->
-
 
 
 {% include 'ad.html' %}

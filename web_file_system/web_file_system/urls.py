@@ -19,10 +19,16 @@ from list import views  as list_views
 
 
 urlpatterns = [
+    path('showAllMoviesData/',list_views.showAllMoviesData,name='showAllMoviesData'),
+
+    
     path('showAllImageData/',list_views.showAllImageData,name='showAllImageData'),
     path('addAllImgToSQL/',list_views.addAllImgToSQL,name='addAllImgToSQL'),
     path('removeAllDataInImage/',list_views.removeAllDataInImage,name='removeAllDataInImage'),
+
+    path('',list_views.movies,name='movies'),
     path('',list_views.home,name='home'),
+
     path('list/',list_views.getList,name='list'),
     path('login/',list_views.login,name='login'),
     path('insertImage/',list_views.insertImage,name='insertImage'),

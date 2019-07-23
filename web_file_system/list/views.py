@@ -6,11 +6,13 @@ import sys
 from django.db.utils import IntegrityError
 # 引入我们创建的表单类
 from .forms import AddForm
+from django.conf import settings
 import os
 import logging
 import json
+from . import operate_images_sql
+from . import operate_movies_sql
 from django.http import JsonResponse
-
 
 # Create your views here.
 
@@ -21,18 +23,29 @@ def home(request):
     print('home')
     return render(request, 'home.html')
 
+def movies(request):
+    return render(request, 'movies.html')
+
 def addAllImgToSQL(request):
-    img_root = os.getcwd()+'\common_static\images\\'
-    print('getcwd ',img_root)
-    print(__file__)
-    print(os.path.dirname(__file__))
+    print('static',settings.STATICFILES_DIRS)
+    print('static',settings.STATIC_URL)
+    resDir = 'images/'
+    
+    # img_root = os.getcwd()+'\common_static\images\\'
+    # print(__file__)
+    # print(os.path.dirname(__file__))
+    print('getcwd 2',os.getcwd())
+
+    img_root = settings.STATICFILES_DIRS[0]+resDir
 
     dataList=[]
 
     for file in os.listdir(img_root):
         dataList.append(
-            image( name=file, path=img_root+file,type=os.path.splitext(file)[1]))
-     
+            image( name=file, path=settings.STATIC_URL+resDir+file,type=os.path.splitext(file)[1]))
+        print('file ',file)
+        print('path ',settings.STATIC_URL+resDir+file)
+        
     try:
         image.objects.bulk_create(dataList)
         return HttpResponse("插入成功")
@@ -68,7 +81,8 @@ def showAllImageData(request):
     print('json',json.dumps(a))
     
     # return render(request, 'home.html', {'num': num})
-    return JsonResponse(json.dumps(a),safe=False)
+    # return JsonResponse(json.dumps(a),safe=False)
+    return JsonResponse(a,safe=False)
     # return HttpResponse(num)
 
 
@@ -86,7 +100,6 @@ def login(request):
     return render(request, 'login.html', {'form': form})
 
 
-# Item.objects.create(name="abc", path="test")
 
 def insertImage(request):
 
@@ -105,3 +118,12 @@ def insertImage(request):
         print("Unexpected error:", sys.exc_info()[0])
         return HttpResponse("插入失败"+str(sys.exc_info()[0]))
 
+
+
+
+
+def showAllMoviesData(request):
+    return HttpResponse(operate_movies_sql.showAllMoviesData())
+
+def insertAllMoviesIntoSQL(request):
+    return HttpResponse(operate_movies_sql.showAllMoviesData())
