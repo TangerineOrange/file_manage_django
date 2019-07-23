@@ -4,7 +4,77 @@
 
 {% block content %}
 
-<button mat-button>Click me!</button>
+add all images to mysql:<a class="btn btn-primary" href="{% url 'addAllImgToSQL'  %}" role="button">add all</a>
+<br />
+remove all images data from mysql:<a class="btn btn-primary" href="{% url 'removeAllDataInImage'  %}"
+    role="button">remove all</a>
+<br />
+show all images data from mysql:<a class="btn" id="show_data" role="button">show all</a>
+<br />
+<br />
+
+<br />
+
+
+<span>{{num}}</span>
+<span>{{num2}}</span>
+<div>
+    <span>result:</span>
+    <span ></span>
+</div>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row" id="result">
+
+    </div>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#show_data").click(function () {
+            console.log('click')
+            $.get("{% url 'showAllImageData'  %}", function (ret) {
+                htmlStr = ""
+
+                
+                console.log('ret' )
+                console.log( JSON.parse(JSON.stringify(ret))[0])
+                console.log( JSON.parse(JSON.stringify(ret))[1])
+                console.log( JSON.parse(JSON.stringify(ret))[2])
+                console.log( JSON.parse(JSON.stringify(ret))[3])
+
+
+
+                console.log(  JSON.stringify(ret)[0])
+                console.log(  JSON.stringify(ret)[1])
+                console.log(  JSON.stringify(ret)[2])
+                console.log(  JSON.stringify(ret)[3])
+                console.log(  JSON.stringify(ret)[4])
+                
+                htmlStr += " <div class=\"col-lg\">        " +
+                        "    <a href=\"#\" class=\"card\">       " +
+                        "         <img src=\""+ret.path+"\" class=\"img-fluid\"   " +
+                        "                 title=\""+ret.name+"\">     " +
+                        "           <div class=\"card-text\">                " +
+                        "    <span>                        "+ret.name+" <br />        " +
+                        "                <date>TYPE:</date> / <date>"+ret.type+"</date>    " +
+                        "                </span>              " +
+                        "  </div>         " +
+                        "   </a>        " +
+                        "</div>"
+                $('#result').html(htmlStr)
+
+            })
+        });
+    });
+</script>
+
+
 
 
 <div class="container-fluid">
@@ -26,8 +96,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="container-fluid">
     <div class="row">

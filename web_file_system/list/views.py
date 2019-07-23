@@ -6,6 +6,10 @@ import sys
 from django.db.utils import IntegrityError
 # 引入我们创建的表单类
 from .forms import AddForm
+import os
+import logging
+import json
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -14,7 +18,58 @@ def getList(request):
     return render(request, 'list.html')
 
 def home(request):
+    print('home')
     return render(request, 'home.html')
+
+def addAllImgToSQL(request):
+    img_root = os.getcwd()+'\common_static\images\\'
+    print('getcwd ',img_root)
+    print(__file__)
+    print(os.path.dirname(__file__))
+
+    dataList=[]
+
+    for file in os.listdir(img_root):
+        dataList.append(
+            image( name=file, path=img_root+file,type=os.path.splitext(file)[1]))
+     
+    try:
+        image.objects.bulk_create(dataList)
+        return HttpResponse("插入成功")
+    except Exception as err:
+        logging.warning(('post_error', str(err)))
+        return HttpResponse("插入失败"+"OS error: {0}".format(err))
+
+
+def removeAllDataInImage(request):
+    try:
+        image.objects.all().delete()
+        return HttpResponse("删除成功")
+    except Exception as err:
+        logging.warning(('post_error', str(err)))
+        return HttpResponse("删除失败"+"OS error: {0}".format(err))
+    
+
+def showAllImageData(request):
+    num = '123123'
+    images = image.objects.all()
+    a = []
+    for img in images:
+        b= {
+            'name': img.name,
+            'path': img.path,
+            'type': img.type,
+        }
+        a.append(
+            b
+        )
+
+    print('a',a)
+    print('json',json.dumps(a))
+    
+    # return render(request, 'home.html', {'num': num})
+    return JsonResponse(json.dumps(a),safe=False)
+    # return HttpResponse(num)
 
 
 def login(request):
