@@ -16,7 +16,7 @@ from django.http import JsonResponse
 # Create your views here.
 
 
-def insertAllMoviesIntoSQL(request):
+def insertAllMoviesIntoSQL():
     resDir = 'movies/'
 
     m_root = settings.STATIC_DIR_NAME+resDir
@@ -26,16 +26,16 @@ def insertAllMoviesIntoSQL(request):
     for file in os.listdir(m_root):
         dataList.append(
             Movies(
-                # number = models.CharField(max_length=30)
-                # title = models.TextField()
-                # movie_path = models.TextField()
-                # cover_name = models.TextField()
-                # cover_path = models.TextField()
-                # acter = models.CharField(max_length=30)
-                # date = models.DateField()
-                # publisher = models.CharField(max_length=30)
-                # creater = models.CharField(max_length=30)
-                # serial = models.TextField()
+                #  number = models.CharField(max_length=30)
+                    # title = models.TextField()
+                    # movie_path = models.TextField()
+                    # cover_name = models.TextField()
+                    # cover_path = models.TextField()
+                    # stars = models.CharField(max_length=30)
+                    # date = models.DateField()
+                    # studio = models.CharField(max_length=30)
+                    # label = models.CharField(max_length=30)
+                    # series = models.TextField() 
                 
                 name=file, path=settings.STATIC_URL+resDir+file, type=os.path.splitext(file)[1]))
         print('file ', file)

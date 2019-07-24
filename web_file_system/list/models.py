@@ -23,13 +23,12 @@ class Movies(models.Model):
     movie_path = models.TextField()
     cover_name = models.TextField()
     cover_path = models.TextField()
-    acter = models.CharField(max_length=30)
+    stars = models.CharField(max_length=30)
     date = models.DateField()
-    publisher = models.CharField(max_length=30)
-    creater = models.CharField(max_length=30)
-    serial = models.TextField()
-    # key_words = models.TextField()
+    studio = models.CharField(max_length=30)
+    label = models.CharField(max_length=30)
+    series = models.TextField()
+    # genre = models.TextField()
 
     def __str__(self):
-        return self.title
-    
+        return self.number

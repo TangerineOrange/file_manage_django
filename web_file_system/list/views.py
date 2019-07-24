@@ -126,4 +126,4 @@ def showAllMoviesData(request):
     return HttpResponse(operate_movies_sql.showAllMoviesData())
 
 def insertAllMoviesIntoSQL(request):
-    return HttpResponse(operate_movies_sql.showAllMoviesData())
+    return HttpResponse(operate_movies_sql.insertAllMoviesIntoSQL())
